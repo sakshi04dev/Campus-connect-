@@ -1,1 +1,637 @@
-Initialize homepage
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CampusConnect — Discover clubs, connect with students, and explore campus life.">
+  <title>CampusConnect | Discover Your Community</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b1020;
+      --surface: #11192b;
+      --surface-light: #18233a;
+      --text: #f4f6fc;
+      --muted: #a4aec2;
+      --accent: #8ba7ff;
+      --border: rgba(255,255,255,.10);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; }
+
+    .container {
+      width: min(1160px, 90%);
+      margin: auto;
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(11,16,32,.94);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-family: "Manrope", sans-serif;
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: -.7px;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 11px;
+      background: var(--accent);
+      color: #10172b;
+      font-weight: 800;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a:hover { color: white; }
+
+    .nav-cta, .button-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--accent);
+      color: #0b1020;
+      font-weight: 700;
+      padding: 12px 18px;
+      border-radius: 9px;
+      border: 1px solid transparent;
+    }
+
+    .hero {
+      padding: 94px 0 78px;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 78% 18%, rgba(85,112,211,.20), transparent 38%),
+        radial-gradient(ellipse at 8% 70%, rgba(54,91,150,.13), transparent 35%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      align-items: center;
+      gap: 55px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: #bdcbff;
+      background: rgba(139,167,255,.09);
+      border: 1px solid rgba(139,167,255,.23);
+      border-radius: 50px;
+      padding: 7px 12px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .7px;
+      text-transform: uppercase;
+    }
+
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #8ba7ff;
+    }
+
+    h1, h2, h3 {
+      font-family: "Manrope", sans-serif;
+      line-height: 1.2;
+      letter-spacing: -1px;
+    }
+
+    h1 {
+      font-size: clamp(40px, 5.5vw, 66px);
+      margin: 24px 0;
+    }
+
+    .gradient-text {
+      color: var(--accent);
+    }
+
+    .hero-copy {
+      max-width: 520px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+      margin-top: 30px;
+    }
+
+    .button-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      padding: 12px 18px;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .button-secondary:hover { background: var(--surface-light); }
+
+    .hero-note {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 20px;
+    }
+
+    .feature-panel {
+      position: relative;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px;
+      background: linear-gradient(145deg, rgba(24,35,58,.96), rgba(17,25,43,.96));
+      box-shadow: 0 30px 80px rgba(0,0,0,.24);
+    }
+
+    .panel-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 22px;
+      gap: 10px;
+    }
+
+    .panel-top h3 { font-size: 17px; letter-spacing: -.3px; }
+
+    .live-label {
+      font-size: 11px;
+      color: #a8e6ca;
+      background: rgba(74,190,137,.10);
+      border: 1px solid rgba(74,190,137,.22);
+      border-radius: 20px;
+      padding: 5px 9px;
+    }
+
+    .club-preview {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.025);
+      padding: 15px;
+      border-radius: 12px;
+      margin-top: 11px;
+    }
+
+    .club-icon {
+      width: 45px;
+      height: 45px;
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      font-size: 21px;
+      background: #273453;
+    }
+
+    .club-preview h4 { font-size: 14px; margin-bottom: 3px; }
+    .club-preview p { color: var(--muted); font-size: 12px; }
+
+    .club-arrow {
+      margin-left: auto;
+      color: var(--muted);
+      font-size: 20px;
+    }
+
+    .panel-bottom {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      border-top: 1px solid var(--border);
+      padding-top: 18px;
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .panel-bottom strong { display: block; color: var(--text); font-size: 19px; }
+
+    .section { padding: 78px 0; }
+    .section-muted { background: #0e1526; }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+
+    .section-heading h2 { font-size: clamp(27px, 4vw, 38px); margin-bottom: 9px; }
+    .section-heading p { color: var(--muted); max-width: 560px; font-size: 14px; }
+
+    .text-link { color: #b6c7ff; font-weight: 700; font-size: 14px; }
+
+    .club-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .club-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      padding: 23px;
+      transition: transform .2s, border-color .2s;
+    }
+
+    .club-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(139,167,255,.5);
+    }
+
+    .club-card .club-icon { margin-bottom: 19px; }
+    .club-card h3 { font-size: 18px; letter-spacing: -.4px; margin-bottom: 10px; }
+    .club-card p { color: var(--muted); font-size: 13px; min-height: 63px; }
+    .card-link { display: inline-block; margin-top: 18px; color: #b6c7ff; font-size: 13px; font-weight: 700; }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .stat-card {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 25px;
+      background: var(--surface);
+    }
+
+    .stat-card strong {
+      display: block;
+      font: 800 31px "Manrope", sans-serif;
+      margin-bottom: 5px;
+    }
+
+    .stat-card span { color: var(--muted); font-size: 13px; }
+
+    .event-card {
+      display: grid;
+      grid-template-columns: 75px 1fr auto;
+      align-items: center;
+      gap: 20px;
+      padding: 21px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--surface);
+      margin-top: 13px;
+    }
+
+    .event-date {
+      text-align: center;
+      background: #202d4a;
+      border-radius: 10px;
+      padding: 10px 5px;
+    }
+
+    .event-date strong { display: block; font-size: 24px; font-family: "Manrope", sans-serif; }
+    .event-date span { color: #bdcbff; font-size: 11px; text-transform: uppercase; }
+    .event-info h3 { font-size: 16px; letter-spacing: -.3px; margin-bottom: 5px; }
+    .event-info p { color: var(--muted); font-size: 12px; }
+
+    .event-tag {
+      font-size: 11px;
+      padding: 6px 9px;
+      border-radius: 7px;
+      background: rgba(139,167,255,.10);
+      color: #bdcbff;
+      white-space: nowrap;
+    }
+
+    .cta {
+      padding: 44px;
+      border: 1px solid rgba(139,167,255,.25);
+      border-radius: 20px;
+      background: radial-gradient(ellipse at top right, rgba(139,167,255,.15), transparent 50%), var(--surface);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .cta h2 { font-size: clamp(25px, 4vw, 35px); margin-bottom: 10px; }
+    .cta p { color: var(--muted); font-size: 14px; max-width: 560px; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 30px 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .footer-links { display: flex; gap: 20px; }
+
+    .menu-toggle {
+      display: none;
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: var(--surface);
+      border-radius: 8px;
+      padding: 8px 11px;
+    }
+
+    @media (max-width: 850px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+      .hero { padding-top: 65px; }
+      .club-grid { grid-template-columns: repeat(2, 1fr); }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .nav-links { gap: 15px; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-inner { min-height: 68px; flex-wrap: wrap; padding: 12px 0; }
+      .brand { font-size: 19px; }
+      .menu-toggle { display: block; }
+      .nav-links { display: none; width: 100%; flex-direction: column; align-items: stretch; gap: 0; padding: 8px 0; }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 10px 4px; }
+      .nav-cta { text-align: center; }
+      .hero { padding: 54px 0; }
+      .section { padding: 55px 0; }
+      .club-grid { grid-template-columns: 1fr; }
+      .section-heading { align-items: start; flex-direction: column; }
+      .event-card { grid-template-columns: 60px 1fr; gap: 13px; }
+      .event-tag { grid-column: 2; justify-self: start; }
+      .cta { padding: 28px; align-items: start; flex-direction: column; }
+      .stats-grid { gap: 10px; }
+      .stat-card { padding: 17px; }
+      .stat-card strong { font-size: 25px; }
+      .feature-panel { padding: 17px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">C</span>
+        <span>CampusConnect</span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="clubs.html">Clubs</a>
+        <a href="events.html">Events</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="about.html">About</a>
+        <a class="nav-cta" href="login.html">Sign in</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow"><span class="eyebrow-dot"></span> Your campus. Your community.</span>
+          <h1>Find your people.<br>Build your <span class="gradient-text">future.</span></h1>
+          <p class="hero-copy">
+            Explore student-led clubs, discover opportunities, and turn your interests into meaningful campus experiences. Everything happening beyond the classroom, in one place.
+          </p>
+          <div class="hero-actions">
+            <a class="button-primary" href="clubs.html">Explore clubs &nbsp; →</a>
+            <a class="button-secondary" href="events.html">Discover events</a>
+          </div>
+          <p class="hero-note">A connected campus starts with a single discovery.</p>
+        </div>
+
+        <div class="feature-panel">
+          <div class="panel-top">
+            <h3>Explore your community</h3>
+            <span class="live-label">CAMPUS LIFE</span>
+          </div>
+
+          <a class="club-preview" href="clubs.html#ai-ml">
+            <span class="club-icon">⌘</span>
+            <span><h4>AI & Machine Learning</h4><p>Build what's next · Technology</p></span>
+            <span class="club-arrow">↗</span>
+          </a>
+
+          <a class="club-preview" href="clubs.html#cyber-security">
+            <span class="club-icon">⌁</span>
+            <span><h4>Cyber Security Club</h4><p>Think securely · Technology</p></span>
+            <span class="club-arrow">↗</span>
+          </a>
+
+          <a class="club-preview" href="clubs.html#photography">
+            <span class="club-icon">◉</span>
+            <span><h4>Photography & Cinema</h4><p>Capture stories · Creative arts</p></span>
+            <span class="club-arrow">↗</span>
+          </a>
+
+          <div class="panel-bottom">
+            <div><strong>Discover</strong>Find your interests</div>
+            <div><strong>Connect</strong>Meet your community</div>
+            <div><strong>Grow</strong>Build new skills</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-muted">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <h2>Explore communities</h2>
+            <p>Find a space to learn, create, experiment, and work with people who share your interests.</p>
+          </div>
+          <a class="text-link" href="clubs.html">View all clubs →</a>
+        </div>
+
+        <div class="club-grid">
+          <article class="club-card">
+            <div class="club-icon">◈</div>
+            <h3>Publicity Club</h3>
+            <p>Shape campus communication through campaigns, branding, storytelling, and outreach.</p>
+            <a class="card-link" href="clubs.html#publicity">Explore club →</a>
+          </article>
+
+          <article class="club-card">
+            <div class="club-icon">◉</div>
+            <h3>Photography & Cinematography</h3>
+            <p>Tell visual stories through photography, filmmaking, editing, and creative production.</p>
+            <a class="card-link" href="clubs.html#photography">Explore club →</a>
+          </article>
+
+          <article class="club-card">
+            <div class="club-icon">∑</div>
+            <h3>Mathematics & Applied Science</h3>
+            <p>Explore analytical thinking, scientific experiments, mathematical models, and research.</p>
+            <a class="card-link" href="clubs.html#maths-science">Explore club →</a>
+          </article>
+
+          <article class="club-card">
+            <div class="club-icon">⌁</div>
+            <h3>Cyber Security Club</h3>
+            <p>Learn defensive security, digital safety, ethical security practices, and threat awareness.</p>
+            <a class="card-link" href="clubs.html#cyber-security">Explore club →</a>
+          </article>
+
+          <article class="club-card">
+            <div class="club-icon">⌘</div>
+            <h3>DevOps Club</h3>
+            <p>Explore automation, CI/CD, cloud infrastructure, containers, and deployment workflows.</p>
+            <a class="card-link" href="clubs.html#devops">Explore club →</a>
+          </article>
+
+          <article class="club-card">
+            <div class="club-icon">⬡</div>
+            <h3>Robotics Club</h3>
+            <p>Bring ideas to life with embedded systems, sensors, electronics, and autonomous robots.</p>
+            <a class="card-link" href="clubs.html#robotics">Explore club →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <h2>A platform for campus life</h2>
+            <p>One organized space for students to find communities and for club teams to coordinate activities.</p>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card"><strong>10+</strong><span>Club categories planned</span></div>
+          <div class="stat-card"><strong>01</strong><span>Connected campus platform</span></div>
+          <div class="stat-card"><strong>24/7</strong><span>Access to campus information</span></div>
+          <div class="stat-card"><strong>∞</strong><span>Opportunities to explore</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-muted">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <h2>Discover what's happening</h2>
+            <p>Workshops, student showcases, technical sessions, and creative campus experiences.</p>
+          </div>
+          <a class="text-link" href="events.html">Explore events →</a>
+        </div>
+
+        <div class="event-card">
+          <div class="event-date"><strong>01</strong><span>Event</span></div>
+          <div class="event-info">
+            <h3>Technology & Innovation Showcase</h3>
+            <p>Projects, demos, and ideas from student communities.</p>
+          </div>
+          <span class="event-tag">Technology</span>
+        </div>
+
+        <div class="event-card">
+          <div class="event-date"><strong>02</strong><span>Event</span></div>
+          <div class="event-info">
+            <h3>Creative Media Workshop</h3>
+            <p>Visual storytelling, production techniques, and collaborative work.</p>
+          </div>
+          <span class="event-tag">Creative</span>
+        </div>
+
+        <div class="event-card">
+          <div class="event-date"><strong>03</strong><span>Event</span></div>
+          <div class="event-info">
+            <h3>Robotics & Applied Science Day</h3>
+            <p>Explore prototypes, experiments, and practical demonstrations.</p>
+          </div>
+          <span class="event-tag">Engineering</span>
+        </div>
+        <p class="hero-note">Sample event previews — actual schedules will be added when event management is connected.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="cta">
+          <div>
+            <h2>Your next opportunity starts here.</h2>
+            <p>Explore student communities, discover events, and find new ways to contribute to campus life.</p>
+          </div>
+          <a class="button-primary" href="clubs.html">Explore communities →</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <a class="brand" href="index.html"><span class="brand-mark">C</span><span>CampusConnect</span></a>
+      <span>Student communities. Shared opportunities. One campus.</span>
+      <div class="footer-links">
+        <a href="clubs.html">Clubs</a>
+        <a href="events.html">Events</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.textContent = isOpen ? "✕" : "☰";
+    });
+  </script>
+</body>
+</html>
